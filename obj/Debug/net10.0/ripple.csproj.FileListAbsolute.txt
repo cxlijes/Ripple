@@ -1,0 +1,5 @@
+E:\Dev\ripple\obj\Debug\net10.0\ripple.GeneratedMSBuildEditorConfig.editorconfig
+E:\Dev\ripple\obj\Debug\net10.0\ripple.AssemblyInfoInputs.cache
+E:\Dev\ripple\obj\Debug\net10.0\ripple.AssemblyInfo.cs
+E:\Dev\ripple\obj\Debug\net10.0\ripple.csproj.CoreCompileInputs.cache
+E:\Dev\ripple\obj\Debug\net10.0\ripple.sourcelink.json

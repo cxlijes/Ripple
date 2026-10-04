@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
-
-namespace ripple.models;
+﻿namespace Ripple.Models;
 
 public enum LectureStatus
 {
