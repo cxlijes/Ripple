@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "IwrqyeekBss=",
+  "dgSpecHash": "uB/PTBzgAwU=",
   "success": true,
   "projectFilePath": "E:\\Dev\\ripple\\ripple.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Andrew\\.nuget\\packages\\documentformat.openxml\\3.5.1\\documentformat.openxml.3.5.1.nupkg.sha512",
+    "C:\\Users\\Andrew\\.nuget\\packages\\documentformat.openxml.framework\\3.5.1\\documentformat.openxml.framework.3.5.1.nupkg.sha512",
+    "C:\\Users\\Andrew\\.nuget\\packages\\naudio\\3.1.0\\naudio.3.1.0.nupkg.sha512",
+    "C:\\Users\\Andrew\\.nuget\\packages\\naudio.core\\3.1.0\\naudio.core.3.1.0.nupkg.sha512",
+    "C:\\Users\\Andrew\\.nuget\\packages\\naudio.midi\\3.1.0\\naudio.midi.3.1.0.nupkg.sha512",
+    "C:\\Users\\Andrew\\.nuget\\packages\\system.io.packaging\\10.0.2\\system.io.packaging.10.0.2.nupkg.sha512",
+    "C:\\Users\\Andrew\\.nuget\\packages\\system.numerics.tensors\\9.0.0\\system.numerics.tensors.9.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
