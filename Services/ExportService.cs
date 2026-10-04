@@ -9,7 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Ripple.Services;
 
-public sealed class ExportService : IDocumentExporter
+public class ExportService : IDocumentExporter
 {
     public string BuildMarkdown(Lecture lecture, bool includeTranscript = true)
     {

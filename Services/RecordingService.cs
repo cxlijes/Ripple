@@ -2,7 +2,7 @@
 
 namespace Ripple.Services;
 
-public sealed class RecordingService : IRecordingService
+public class RecordingService : IRecordingService
 {
     private WasapiLoopbackCapture? capture;
     private WaveFileWriter? writer;

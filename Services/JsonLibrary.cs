@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Ripple.Services;
 
-public sealed class JsonLibraryStore : ILibraryStore
+public class JsonLibraryStore : ILibraryStore
 {
     private static readonly JsonSerializerOptions _jsonOptions = new()
     {
