@@ -1,4 +1,6 @@
-﻿namespace Ripple.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace Ripple;
 
 public enum LectureStatus
 {
@@ -17,7 +19,7 @@ public enum SourceKind
     Recording
 }
 
-public class TranscriptSegment
+public sealed class TranscriptSegment
 {
     public double Start { get; set; }
     public double End { get; set; }
@@ -26,7 +28,7 @@ public class TranscriptSegment
     public string Timestamp => TimeSpan.FromSeconds(Start).ToString(@"hh\:mm\:ss");
 }
 
-public class Lecture
+public sealed class Lecture
 {
     public string Id { get; set; } = Guid.NewGuid().ToString("N");
     public string Title { get; set; } = "Без названия";
@@ -42,8 +44,10 @@ public class Lecture
 
     public string? Summary { get; set; }
 
+    [JsonIgnore]
     public string DurationText => TimeSpan.FromSeconds(DurationSeconds).ToString(@"hh\:mm\:ss");
 
+    [JsonIgnore]
     public string StatusText => Status switch
     {
         LectureStatus.Downloading => "Загрузка…",
@@ -54,5 +58,6 @@ public class Lecture
         _ => "Черновик"
     };
 
+    [JsonIgnore]
     public string FullText => string.Join("\n", Segments.Select(s => s.Text));
 }

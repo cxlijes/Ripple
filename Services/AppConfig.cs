@@ -1,4 +1,6 @@
-﻿namespace Ripple.Services;
+﻿using System.Text.Json.Serialization;
+
+namespace Ripple.Services;
 
 public class AppConfig
 {
@@ -19,9 +21,8 @@ public class AppConfig
 
     public bool AutoSummarize { get; set; } = true;
 
-    public string Theme { get; set; } = "Light";
-
     public string DataRoot { get; set; } = @"e:\dev\ripple\storage";
 
+    [JsonIgnore]
     public string LlamaBaseUrl => $"http://{LlamaHost}:{LlamaPort}";
 }

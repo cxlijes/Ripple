@@ -9,7 +9,6 @@ public static class Storage
             var dir = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Ripple");
             Directory.CreateDirectory(dir);
-
             return dir;
         }
     }
@@ -28,6 +27,7 @@ public static class Storage
     private static string Ensure(string dir)
     {
         Directory.CreateDirectory(dir);
+
         return dir;
     }
 
@@ -35,17 +35,9 @@ public static class Storage
     {
         try
         {
-            if (Directory.Exists(dir))
-            {
-                return new DirectoryInfo(dir)
-                    .EnumerateFiles("*", SearchOption.AllDirectories)
-                    .Sum(f => f.Length);
-            }
-
-            else
-            {
-                return 0;
-            }
+            return Directory.Exists(dir)
+                ? new DirectoryInfo(dir).EnumerateFiles("*", SearchOption.AllDirectories).Sum(f => f.Length)
+                : 0;
         }
 
         catch

@@ -1,6 +1,4 @@
-﻿using Ripple.Models;
-
-namespace Ripple.Services;
+﻿namespace Ripple.Services;
 
 public interface IConfigStore
 {
@@ -16,6 +14,8 @@ public interface ILibraryStore
     void SaveAll(IEnumerable<Lecture> lectures);
 
     void Upsert(Lecture lecture);
+
+    bool Remove(string id);
 }
 
 public interface IProcessRunner
@@ -31,6 +31,8 @@ public interface IProcessRunner
 
 public interface IMediaService
 {
+    IProgress<double>? Progress { get; set; }
+
     Task<string> ToWavAsync(string inputPath, CancellationToken ct = default);
 
     Task<double> GetDurationAsync(string mediaPath, CancellationToken ct = default);
