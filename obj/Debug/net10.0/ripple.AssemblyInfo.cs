@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ripple")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20a3124c8fb9ec5764b9c27dbaca4b30c78639b5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c398345f19d0253a17cdcd846a255df4c1956126")]
 [assembly: System.Reflection.AssemblyProductAttribute("ripple")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ripple")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
