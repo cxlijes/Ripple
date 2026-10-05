@@ -41,12 +41,14 @@ public static class CliHelper
         if (matches.Count == 0)
         {
             Error($"Лекция с ID, начинающимся на «{idPrefix}», не найдена.");
+
             return null;
         }
 
         if (matches.Count > 1)
         {
             Error($"ID «{idPrefix}» неоднозначен ({matches.Count} совпадений). Уточните.");
+
             return null;
         }
 

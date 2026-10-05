@@ -82,6 +82,7 @@ public static class ImportCommand
         if (source.Contains("://") && Uri.TryCreate(source, UriKind.Absolute, out _))
         {
             kind = SourceKind.Url;
+
             return true;
         }
 
@@ -89,6 +90,7 @@ public static class ImportCommand
         if (File.Exists(full))
         {
             resolved = full;
+
             return true;
         }
 
@@ -98,14 +100,17 @@ public static class ImportCommand
             if (files.Count == 0)
             {
                 CliHelper.Error($"В папке {full} нет аудио- или видеофайлов.");
+
                 return false;
             }
             resolved = files.OrderBy(f => f).First();
             CliHelper.Info($"Папка: берём {Path.GetFileName(resolved)}");
+
             return true;
         }
 
         CliHelper.Error($"Файл не найден: {source}");
+
         return false;
     }
 
@@ -121,12 +126,14 @@ public static class ImportCommand
         {
             CliHelper.Error($"Не удалось: {lecture.Error}");
             CliHelper.Info($"Лекция сохранена со статусом «{lecture.StatusText}» — её можно перезапустить: ripple retry {lecture.Id[..8]}");
+
             return 1;
         }
 
         CliHelper.Ok($"Готово: {lecture.Segments.Count} сегментов, {lecture.DurationText}");
         CliHelper.Info($"  Конспект: {(string.IsNullOrWhiteSpace(lecture.Summary) ? "не создан" : $"{lecture.Summary.Length} символов")}");
         CliHelper.Info($"  Посмотреть: ripple show {lecture.Id[..8]}");
+
         return 0;
     }
 }

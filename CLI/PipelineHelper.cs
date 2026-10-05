@@ -9,7 +9,6 @@ public static class PipelineHelper
         var media = AppServices.Media;
         media.Progress = new Progress<double>(p =>
             CliHelper.Progress($"[{p,7:P0}] Скачивание..."));
-
         if (lecture.Source == SourceKind.File || lecture.Source == SourceKind.Recording)
         {
             CliHelper.Progress("Конвертация в WAV...");
