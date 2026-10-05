@@ -1,11 +1,8 @@
-﻿using DocumentFormat.OpenXml;
+﻿using System.Text;
+using System.Text.RegularExpressions;
+using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using Ripple.Models;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Text.RegularExpressions;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Ripple.Services;
 
@@ -60,7 +57,6 @@ public class ExportService : IDocumentExporter
         if (!string.IsNullOrWhiteSpace(lecture.Summary))
         {
             body.AppendChild(Heading("Конспект"));
-
             foreach (var line in lecture.Summary.Split('\n'))
             {
                 var text = line.TrimEnd('\r');
@@ -91,12 +87,9 @@ public class ExportService : IDocumentExporter
         }
     }
 
-    private static Paragraph Heading(string text)
-    {
-        return new(
+    private static Paragraph Heading(string text) => new(
         new ParagraphProperties(new ParagraphStyleId { Val = "Heading1" }),
         new Run(new Text(text) { Space = SpaceProcessingModeValues.Preserve }));
-    }
 
     private static void AppendMdLine(Body body, string line)
     {
@@ -116,13 +109,14 @@ public class ExportService : IDocumentExporter
 
             return;
         }
+
         if (Regex.IsMatch(line, @"^\d+\. "))
         {
             var p = new Paragraph(
                 new ParagraphProperties(new NumberingProperties(
                     new NumberingLevelReference { Val = 0 },
                     new NumberingId { Val = 2 })));
-
+            
             foreach (var el in MdRuns(line[Regex.Match(line, @"^\d+\. ").Length..]))
             {
                 p.AppendChild(el);
@@ -137,11 +131,10 @@ public class ExportService : IDocumentExporter
         if (h.Success)
         {
             body.AppendChild(Heading(h.Groups[1].Value));
-
             return;
         }
-        var para = new Paragraph();
 
+        var para = new Paragraph();
         foreach (var el in MdRuns(line))
         {
             para.AppendChild(el);
@@ -154,7 +147,6 @@ public class ExportService : IDocumentExporter
     {
         var runs = new List<OpenXmlElement>();
         var pattern = new Regex(@"(\*\*.+?\*\*|`.+?`)");
-
         foreach (var part in pattern.Split(text))
         {
             if (part.Length == 0)

@@ -28,6 +28,7 @@ public class RecordingService : IRecordingService
                 writer?.Flush();
             }
         };
+
         capture.RecordingStopped += (_, _) =>
         {
             lock (_lock)
@@ -68,11 +69,6 @@ public class RecordingService : IRecordingService
             return;
         }
 
-        try
-        {
-            StopSystemAudio();
-        }
-
-        catch { }
+        try { StopSystemAudio(); } catch { }
     }
 }

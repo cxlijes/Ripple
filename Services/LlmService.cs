@@ -1,5 +1,4 @@
-﻿using Ripple.Models;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Text.Json;
 
 namespace Ripple.Services;
@@ -87,13 +86,10 @@ public class LlmService : ISummarizationService
             $"Транскрипция:\n\"\"\"\n{text}\n\"\"\"";
 
         if (question.Length <= chunkChars)
-        {
             return await ChatAsync(system, question, ct);
-        }
 
         var chunks = SplitText(text, chunkChars);
         var partials = new List<string>();
-
         for (var i = 0; i < chunks.Count; i++)
         {
             ct.ThrowIfCancellationRequested();
@@ -142,15 +138,16 @@ public class LlmService : ISummarizationService
     {
         var parts = new List<string>();
         var pos = 0;
-
         while (pos < text.Length)
         {
             var len = Math.Min(size, text.Length - pos);
-
             if (len < text.Length - pos)
             {
                 var nl = text.LastIndexOf("\n\n", pos + len, StringComparison.Ordinal);
-                if (nl > pos + size / 2) len = nl - pos;
+                if (nl > pos + size / 2)
+                {
+                    len = nl - pos;
+                }
             }
 
             parts.Add(text.Substring(pos, len));

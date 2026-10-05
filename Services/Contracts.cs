@@ -59,7 +59,7 @@ public interface ISummarizationService
     Task<string> SummarizeAsync(Lecture lecture, CancellationToken ct = default);
 }
 
-public sealed record EnvironmentStatus(bool WhisperOk, bool LlmOk);
+public record EnvironmentStatus(bool WhisperOk, bool LlmOk);
 
 public interface IHealthProbe
 {

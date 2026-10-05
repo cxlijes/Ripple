@@ -1,5 +1,4 @@
-﻿using Ripple.Models;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
@@ -88,15 +87,10 @@ public class WhisperService : ITranscriptionService
 
         var jsonPath = Directory.GetFiles(outDir, "*.json").FirstOrDefault();
 
-        if (jsonPath == null)
-        {
-            throw new FileNotFoundException("whisper не создал JSON-файл");
-        }
-
         await using var stream = File.OpenRead(jsonPath);
         using var doc = await JsonDocument.ParseAsync(stream, cancellationToken: ct);
-        var segments = new List<TranscriptSegment>();
 
+        var segments = new List<TranscriptSegment>();
         foreach (var seg in doc.RootElement.GetProperty("segments").EnumerateArray())
         {
             segments.Add(new TranscriptSegment
@@ -106,8 +100,30 @@ public class WhisperService : ITranscriptionService
                 Text = seg.GetProperty("text").GetString() ?? ""
             });
         }
+        DeleteDirectoryWithRetry(outDir);
 
-        Directory.Delete(outDir, recursive: true);
         return segments;
+    }
+
+    private static void DeleteDirectoryWithRetry(string path)
+    {
+        for (var attempt = 1; ; attempt++)
+        {
+            try
+            {
+                Directory.Delete(path, recursive: true);
+                return;
+            }
+
+            catch (IOException) when (attempt < 4)
+            {
+                Thread.Sleep(100 * attempt);
+            }
+
+            catch
+            {
+                return;
+            }
+        }
     }
 }
