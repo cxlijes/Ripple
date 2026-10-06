@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Dev\\ripple\\ripple.csproj": {}
+    "E:\\dev\\ripple\\ripple.csproj": {}
   },
   "projects": {
-    "E:\\Dev\\ripple\\ripple.csproj": {
+    "E:\\dev\\ripple\\ripple.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Dev\\ripple\\ripple.csproj",
+        "projectUniqueName": "E:\\dev\\ripple\\ripple.csproj",
         "projectName": "ripple",
-        "projectPath": "E:\\Dev\\ripple\\ripple.csproj",
+        "projectPath": "E:\\dev\\ripple\\ripple.csproj",
         "packagesPath": "C:\\Users\\Andrew\\.nuget\\packages\\",
-        "outputPath": "E:\\Dev\\ripple\\obj\\",
+        "outputPath": "E:\\dev\\ripple\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Andrew\\AppData\\Roaming\\NuGet\\NuGet.Config",

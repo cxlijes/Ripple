@@ -37,7 +37,7 @@ public class ExportService : IDocumentExporter
 
     public void ExportMarkdown(Lecture lecture, string path, bool includeTranscript = true)
     {
-        return File.WriteAllText(path, BuildMarkdown(lecture, includeTranscript));
+        File.WriteAllText(path, BuildMarkdown(lecture, includeTranscript));
     }
 
     public void ExportDocx(Lecture lecture, string path, bool includeTranscript = true)
