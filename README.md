@@ -45,7 +45,7 @@
 1. Клонируйте репозиторий и перейдите в каталог проекта (где лежит `ripple.csproj`):
 
 ```bash
-   git clone <!-- TODO: URL репозитория -->
+   git clone github.com/cxlijes/Ripple
    cd ripple
 ```
 
